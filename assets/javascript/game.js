@@ -1,3 +1,10 @@
+// generate random number for the gamer to play against (between 19 and 120)
+// declare vars to apply to the gem buttons (between 1 and 12)
+// declare counter vars and initialize to 0
+// create functions to register clicks, add numbers to user score and compare to computer number
+// play sound and reset game for next round
+
+
 $( document ).ready(function(){
     var Random=Math.floor(Math.random()*101+19)
     // Selects a random number to be shown at the start of the game
