@@ -1,58 +1,45 @@
 // generate random number for the gamer to play against (between 19 and 120)
-// declare vars to apply to the gem buttons (between 1 and 12)
+// declare vars to apply to the stones (between 1 and 12)
 // declare counter vars and initialize to 0
-// create functions to register clicks, add numbers to user score and compare to computer number
+// create functions to register clicks, add numbers to user score, and compare to computer number
 // play sound and reset game for next round
 
-
+// generate random number for the user to play against
 $( document ).ready(function(){
     var Random=Math.floor(Math.random()*101+19)
-    // Selects a random number to be shown at the start of the game
-    // Number should be should be between 19 - 120
-    //
+  
+    // attach computer generated random number to the html
     $('#randomNumber').text(Random);
-    // Appending random number to the randomNumber id in the html doc
-    //
+    
+    // generate random numbers for the four stones
     var num1= Math.floor(Math.random()*11+1)
     var num2= Math.floor(Math.random()*11+1)
     var num3= Math.floor(Math.random()*11+1)
     var num4= Math.floor(Math.random()*11+1)
-    // Setting up random numbers for each jewel
-    // Random number has to be between 1 - 12
-    // 
+  
+    // declare counter vars and initialize to 0
     var userTotal= 0; 
     var wins= 0;
     var losses = 0;
-    //  Decaring variables for tallies
+  // attach win / loss vars to the html
   $('#numberWins').text(wins);
   $('#numberLosses').text(losses);
-  //resets the game
-  function reset(){
-        Random=Math.floor(Math.random()*101+19);
-        console.log(Random)
-        $('#randomNumber').text(Random);
-        num1= Math.floor(Math.random()*11+1);
-        num2= Math.floor(Math.random()*11+1);
-        num3= Math.floor(Math.random()*11+1);
-        num4= Math.floor(Math.random()*11+1);
-        userTotal= 0;
-        $('#finalTotal').text(userTotal);
-        } 
-  //adds the wins to the userTotal
+  
+ //Increments user wins
   function yay(){
   alert("You won!");
     wins++; 
     $('#numberWins').text(wins);
     reset();
   }
-  //addes the losses to the userTotal
+//Increments user loses
   function loser(){
   alert ("You lose!");
     losses++;
     $('#numberLosses').text(losses);
     reset()
   }
-  //sets up click for jewels
+ // the following four functions both log the user totals but also compare the current user score aginst the computer generated number. If the answer is yes, then the user recieves an alert and the game resets. I the user loses, then they are notified of that and the game resets. The number of wins / loses incremets dependimg upon the outcome
     $('#one').on ('click', function(){
       userTotal = userTotal + num1;
       console.log("New userTotal= " + userTotal);
@@ -101,3 +88,16 @@ $( document ).ready(function(){
           }
     });   
   }); 
+
+ //reset the gameboard
+ function reset(){
+  Random=Math.floor(Math.random()*101+19);
+  console.log(Random)
+  $('#randomNumber').text(Random);
+  num1= Math.floor(Math.random()*11+1);
+  num2= Math.floor(Math.random()*11+1);
+  num3= Math.floor(Math.random()*11+1);
+  num4= Math.floor(Math.random()*11+1);
+  userTotal= 0;
+  $('#finalTotal').text(userTotal);
+  } 
